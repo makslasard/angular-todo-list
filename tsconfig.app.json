@@ -7,9 +7,15 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/app/services/**/*.ts",
+    "src/app/constants/**/*.ts",
+    "src/app/api/**/*.ts",
+    "src/app/types/**/*.ts",
+    "src/app/guards/**/*.ts",
+    "src/app/interceptors/**/*.ts",
   ]
 }
