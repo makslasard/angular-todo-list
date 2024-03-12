@@ -15,5 +15,7 @@
     "src/app/constants/**/*.ts",
     "src/app/api/**/*.ts",
     "src/app/types/**/*.ts",
+    "src/app/guards/**/*.ts",
+    "src/app/interceptors/**/*.ts",
   ]
 }
