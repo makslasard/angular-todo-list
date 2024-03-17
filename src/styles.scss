@@ -16,7 +16,7 @@
 
 @layer components {
   .input {
-    @apply rounded-sm text-sm border-transparent bg-slate-700 p-2 outline-none border focus:border-blue-500
+    @apply p-2 border outline-none rounded shadow
   }
 
   .btn {

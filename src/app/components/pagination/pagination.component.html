@@ -1,0 +1,29 @@
+<div>
+  <h2 class='text-xl font-bold mb-4 flex justify-center'>Пагинация задач:</h2>
+
+  <div class='flex items-center justify-between gap-4'>
+
+    <button (click)='decrCurrentPage()'>
+      <fa-icon [icon]='leftArrowIcon'></fa-icon>
+    </button>
+
+    <div class='flex gap-4'>
+      <button
+        *ngFor='let page of getPageNumbers(); let i = index'
+        [ngClass]="taskService.currentPage === i + 1
+          ? 'input pl-3.5 pr-3.5 bg-gray-600 text-white'
+          : 'input pl-3.5 pr-3.5'">
+        {{ page }}
+      </button>
+    </div>
+
+
+    <button [disabled]='taskService.currentPage === taskService.totalPages' (click)='incrCurrentPage()'>
+      <fa-icon [icon]='rightArrowIcon'></fa-icon>
+    </button>
+
+  </div>
+
+</div>
+<!--[disabled]='taskService.currentPage === taskService.totalPages-->
+<!--new Array(pageLimit).fill().map((_, idx) => start + idx + 1)-->

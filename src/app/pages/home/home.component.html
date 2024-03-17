@@ -1,12 +1,10 @@
-<div class='grid grid-cols-3 gap-4'>
-  <div class='grid col-span-2 shadow p-4 rounded'>
-    <app-transactions-form></app-transactions-form>
-  </div>
-  <div class='grid'>
-    <app-categories></app-categories>
-  </div>
-</div>
-
 <div>
-  <app-transactions-table></app-transactions-table>
+  <app-create-task></app-create-task>
+  <div class='flex items-center justify-between mt-4'>
+    <app-search-task></app-search-task>
+    <app-pagination></app-pagination>
+    <app-sort-task></app-sort-task>
+  </div>
+
+  <app-list-task></app-list-task>
 </div>
