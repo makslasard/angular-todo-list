@@ -1,0 +1,52 @@
+<form [formGroup]='createTasksForm' (ngSubmit)='onSubmit()' class='border p-4 rounded flex flex-col shadow'>
+  <h2 class='font-bold text-lg'>Создать задачу:</h2>
+
+  <label class='flex flex-col mt-2'>
+    <span>Название задачи</span>
+    <input class='input' type='text' placeholder='Название задачи...' required
+           formControlName='name'>
+
+    <div
+      *ngIf='createTasksForm.controls["name"].invalid && (createTasksForm.controls["name"].dirty || createTasksForm.controls["name"].touched)'
+      class='text-red-500 text-xs mt-2'>
+      <div *ngIf='createTasksForm.controls["name"].hasError("required")'>
+        Название задачи обязательное поле
+      </div>
+      <div *ngIf='createTasksForm.controls["name"].hasError("minlength")'>
+        Название задачи должно содержать минимум 6 символов
+      </div>
+    </div>
+  </label>
+
+  <label class='flex flex-col mt-2'>
+    <span>Описание задачи</span>
+    <input class='input' type='text' placeholder='Описание задачи...' required
+           formControlName='info'>
+
+    <div
+      *ngIf='createTasksForm.controls["info"].invalid && (createTasksForm.controls["info"].dirty || createTasksForm.controls["info"].touched)'
+      class='text-red-500 text-xs mt-2'>
+      <div *ngIf='createTasksForm.controls["info"].hasError("required")'>
+        Описание задачи обязательное поле
+      </div>
+      <div *ngIf='createTasksForm.controls["info"].hasError("minlength")'>
+        Описание задачи должно содержать минимум 6 символов
+      </div>
+    </div>
+  </label>
+
+  <div class='flex items-center gap-4 mt-2'>
+    <label class='flex items-center gap-4 mt-2'>
+      <input class='form-radio text-blue-600' type='checkbox' value='completed' formControlName='isCompleted'>
+      <span>Completed</span>
+    </label>
+
+    <label class='flex items-center gap-4 mt-2'>
+      <input class='form-radio text-blue-600' type='checkbox' value='completed' formControlName='isImportant'>
+      <span>Important</span>
+    </label>
+
+    <button [disabled]='!createTasksForm.valid' class='btn btn-green flex mt-2'>Создать</button>
+  </div>
+
+</form>
