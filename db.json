@@ -2,72 +2,37 @@
   "todos": [
     {
       "id": "a139",
-      "nameTask": "31231233",
-      "descriptionTask": "1231312",
-      "isCompleted": true,
+      "name": "31231233",
+      "info": "1231312",
+      "isCompleted": false,
       "isImportant": true
     },
     {
-      "id": "3dd8",
-      "nameTask": "321312313",
-      "descriptionTask": "2131231",
-      "isCompleted": null,
-      "isImportant": null
-    },
-    {
-      "id": "2568",
-      "nameTask": "12321313",
-      "descriptionTask": "1231231",
-      "isCompleted": null,
-      "isImportant": null
-    },
-    {
-      "id": "4fd8",
-      "nameTask": "123123213",
-      "descriptionTask": "12321312",
-      "isCompleted": null,
-      "isImportant": null
-    },
-    {
-      "id": "6892",
-      "nameTask": "3213123123",
-      "descriptionTask": "1231231231",
-      "isCompleted": false,
+      "id": "6d69",
+      "name": "313123",
+      "info": "3123131",
+      "isCompleted": true,
       "isImportant": false
     },
     {
-      "id": "4ce9",
-      "nameTask": "312312312",
-      "descriptionTask": "3123123",
-      "isCompleted": null,
-      "isImportant": null
-    },
-    {
-      "id": "20f0",
-      "nameTask": "3123321",
-      "descriptionTask": "3213123",
-      "isCompleted": false,
+      "id": "9619",
+      "name": "111111",
+      "info": "111111",
+      "isCompleted": true,
       "isImportant": false
     },
     {
-      "id": "8c3f",
-      "nameTask": "312312",
-      "descriptionTask": "312321",
-      "isCompleted": false,
+      "id": "1c29",
+      "name": "313123",
+      "info": "313213",
+      "isCompleted": true,
       "isImportant": false
     },
     {
-      "id": "b39f",
-      "nameTask": "312312313",
-      "descriptionTask": "123123123",
-      "isCompleted": false,
-      "isImportant": false
-    },
-    {
-      "id": "a985",
-      "nameTask": "31231233",
-      "descriptionTask": "12312312",
-      "isCompleted": false,
+      "id": "56d2",
+      "name": "123123",
+      "info": "1322211",
+      "isCompleted": true,
       "isImportant": false
     }
   ]

@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
-import { TaskService } from "../../services/task.sevice";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { TaskService } from "../../services/task.service";
 
 @Component({
   selector: "app-sort-task",
   templateUrl: "./sort-task.component.html",
   styleUrls: ["./sort-task.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SortTaskComponent {
   constructor(public taskService: TaskService) {}
@@ -14,15 +15,15 @@ export class SortTaskComponent {
 
     switch (selectedValue) {
       case "isImportant":
-        this.taskService.sortTask(selectedValue);
+        this.taskService.filterTask(selectedValue).subscribe(data => this.taskService.allTasksObs$.next(data));
         break;
 
       case "isCompleted":
-        this.taskService.sortTask(selectedValue);
+        this.taskService.filterTask(selectedValue).subscribe(data => this.taskService.allTasksObs$.next(data));
         break;
 
       default:
-        this.taskService.getAllTask(); // Use plural for consistency
+        this.taskService.getAllTask();
     }
   }
 }

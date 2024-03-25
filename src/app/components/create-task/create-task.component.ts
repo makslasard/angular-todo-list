@@ -1,12 +1,13 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { TaskService } from "../../services/task.sevice";
+import { TaskService } from "../../services/task.service";
 import { ITask } from "../../types/task.interface";
 
 @Component({
   selector: "app-create-task",
   templateUrl: "./create-task.component.html",
   styleUrls: ["./create-task.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateTaskComponent {
   createTasksForm: FormGroup;
@@ -24,14 +25,17 @@ export class CreateTaskComponent {
     if (this.createTasksForm.valid) {
       const formValue = this.createTasksForm.value;
 
-      const taskData: ITask = {
-        name: formValue.nameTask, // Access value using form control name
-        info: formValue.descriptionTask,
-        isCompleted: formValue.isCompleted || false, // Set default if unchecked
-        isImportant: formValue.isImportant || false, // Set default if unchecked
+      const taskData: Omit<ITask, "id"> = {
+        name: formValue.name,
+        info: formValue.info,
+        isCompleted: formValue.isCompleted || false,
+        isImportant: formValue.isImportant || false,
       };
 
-      this.taskService.createTask(taskData);
+      this.taskService.createTask(taskData).subscribe((newTask: ITask) => {
+        this.taskService.allTasksObs$.next([newTask, ...this.taskService.allTasksObs$.value]);
+      });
+
       this.createTasksForm.reset();
     }
   }

@@ -1,11 +1,12 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { faAngleDoubleLeft, faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
-import { TaskService } from "../../services/task.sevice";
+import { TaskService } from "../../services/task.service";
 
 @Component({
   selector: "app-pagination",
   templateUrl: "./pagination.component.html",
   styleUrls: ["./pagination.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent {
   leftArrowIcon = faAngleDoubleLeft;

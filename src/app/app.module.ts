@@ -19,6 +19,8 @@ import { ListTaskComponent } from "./components/list-task/list-task.component";
 import { SortTaskComponent } from "./components/sort-task/sort-task.component";
 import { PaginationComponent } from "./components/pagination/pagination.component";
 import { FilterTaskPipe } from './pipes/filter-task.pipe';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { UpdateTaskComponent } from './pages/update-task/update-task.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { FilterTaskPipe } from './pipes/filter-task.pipe';
     SortTaskComponent,
     PaginationComponent,
     FilterTaskPipe,
+    NotFoundComponent,
+    UpdateTaskComponent,
   ],
   imports: [
     BrowserModule,
