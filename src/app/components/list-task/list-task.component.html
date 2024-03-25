@@ -1,55 +1,52 @@
 <div class='mt-4'>
   <h2 class='font-bold text-xl'>Список задач:</h2>
 
-  <div>
-    <div *ngIf='taskService.allTasksSig()'>
-      <div *ngFor='let task of taskService.allTasksSig()'
-           [ngClass]="task.isCompleted
+  <ng-container *ngIf='taskService.allTasksObs$; else arrayEmpty'>
+    <div *ngFor='let task of taskService.allTasksObs$ | async'
+         [ngClass]="task.isCompleted
        ? 'border rounded p-4 flex gap-4 mt-4 items-center justify-between shadow bg-gray-600 text-white'
        : 'border rounded p-4 flex gap-4 mt-4 items-center justify-between shadow'
     ">
-        <div>
-          <div>
-            <div class='flex items-center gap-4'>
-              <h3>{{ task.name | titlecase }}</h3>
-            </div>
-            <div class='text-gray-400'>
-              <p>{{ task.info }}</p>
-            </div>
-          </div>
 
-          <div class='flex items-center gap-4'>
-            <div *ngIf='task.isImportant' class='bg-red-800 p-2 text-white mt-2'>
-              Important
-            </div>
-            <div *ngIf='task.isCompleted' class='bg-green-800 p-2 text-white mt-2'>
-              Completed
-            </div>
-          </div>
+      <div class='flex items-center gap-4'>
+        <h3>{{ task.name | titlecase }}</h3>
+      </div>
+      <div class='text-gray-400'>
+        <p>{{ task.info }}</p>
+      </div>
 
+      <div class='flex items-center gap-4'>
+        <div *ngIf='task.isImportant' class='bg-red-800 p-2 text-white mt-2'>
+          Important
         </div>
-        <div class='flex items-center gap-4 text-xl'>
-          <div>
-            <button>
-              <fa-icon [icon]='editIcon'></fa-icon>
-            </button>
-          </div>
-          <div>
-            <button (click)='taskService.deleteTask(task.id)'>
-              <fa-icon [icon]='trashIcon'></fa-icon>
-            </button>
-          </div>
-          <div>
-            <input type='checkbox' class='scale-x-150 scale-y-150'
-                   (click)='this.taskService.updateStatusTask(task.id, !task.isCompleted)'>
-          </div>
+        <div *ngIf='task.isCompleted' class='bg-green-800 p-2 text-white mt-2'>
+          Completed
+        </div>
+      </div>
+
+      <div class='flex items-center gap-4 text-xl'>
+        <div>
+          <button (click)='editTaskById(task.id)'>
+            <fa-icon [icon]='editIcon'></fa-icon>
+          </button>
+        </div>
+        <div>
+          <button (click)='deleteTaskById(task.id)'>
+            <fa-icon [icon]='trashIcon'></fa-icon>
+          </button>
+        </div>
+        <div>
+          <input type='checkbox' class='scale-x-150 scale-y-150'
+                 (click)='editStatusTask(task.id, !task?.isCompleted)'>
         </div>
       </div>
     </div>
-    <div *ngIf='taskService.allTasksSig().length === 0'>
-      <p class='text-xl font-bold text-center text-gray-500 mt-8'>Список задач пуст.</p>
-    </div>
-  </div>
 
+
+  </ng-container>
+
+  <ng-template #arrayEmpty>
+    <p class='text-xl font-bold text-center text-gray-500 mt-8'>Список задач пуст.</p>
+  </ng-template>
 
 </div>

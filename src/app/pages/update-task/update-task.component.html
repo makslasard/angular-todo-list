@@ -1,0 +1,52 @@
+<form [formGroup]='updateTasksForm' (ngSubmit)='onSubmit()' class='border p-4 rounded flex flex-col shadow'>
+  <h2 class='font-bold text-lg'>Изменить задачу:</h2>
+
+  <label class='flex flex-col mt-2'>
+    <span>Название задачи</span>
+    <input class='input' type='text' placeholder='Название задачи...' required
+           formControlName='name'>
+
+    <div
+      *ngIf='updateTasksForm.controls["name"].invalid && (updateTasksForm.controls["name"].dirty || updateTasksForm.controls["name"].touched)'
+      class='text-red-500 text-xs mt-2'>
+      <div *ngIf='updateTasksForm.controls["name"].hasError("required")'>
+        Название задачи обязательное поле
+      </div>
+      <div *ngIf='updateTasksForm.controls["name"].hasError("minlength")'>
+        Название задачи должно содержать минимум 6 символов
+      </div>
+    </div>
+  </label>
+
+  <label class='flex flex-col mt-2'>
+    <span>Описание задачи</span>
+    <input class='input' type='text' placeholder='Описание задачи...' required
+           formControlName='info'>
+
+    <div
+      *ngIf='updateTasksForm.controls["info"].invalid && (updateTasksForm.controls["info"].dirty || updateTasksForm.controls["info"].touched)'
+      class='text-red-500 text-xs mt-2'>
+      <div *ngIf='updateTasksForm.controls["info"].hasError("required")'>
+        Описание задачи обязательное поле
+      </div>
+      <div *ngIf='updateTasksForm.controls["info"].hasError("minlength")'>
+        Описание задачи должно содержать минимум 6 символов
+      </div>
+    </div>
+  </label>
+
+  <div class='flex items-center gap-4 mt-2'>
+    <label class='flex items-center gap-4 mt-2'>
+      <input class='form-radio text-blue-600' type='checkbox' value='completed' formControlName='isCompleted'>
+      <span>Completed</span>
+    </label>
+
+    <label class='flex items-center gap-4 mt-2'>
+      <input class='form-radio text-blue-600' type='checkbox' value='completed' formControlName='isImportant'>
+      <span>Important</span>
+    </label>
+
+    <button [disabled]='!updateTasksForm.valid' class='btn btn-green flex mt-2'>Сохранить</button>
+  </div>
+
+</form>
